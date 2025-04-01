@@ -5,11 +5,11 @@ export const fetchLiveLibData = async (username, bookAnnotations, customPages) =
         { pagename: 'reading', elementId: 'last-read-book' },
         { pagename: 'wish', elementId: 'future-books-tab' }
     ];
-    const includeColumns = ['title', 'authors', 'readDate', 'ratingUser', 'isbn', 'genres', 'series', 'bookHref', 'coverHref', 'annotation'];
+    const includeColumns = ['title', 'authors', 'readDate', 'ratingUser', 'isbn', 'genres', 'series', 'bookHref', 'coverHref', 'annotation', 'cycle'];
     const updatedBooks = [];
 
     for (const shelf of shelves) {
-        const url = new URL('https://script.google.com/macros/s/AKfycbyLfdrpkPx-LKs3jr1uwKs-4xPEY8ELNQcZIhfuUAh2cnL4_sZgpuEz6KZVKg95B_-I/exec');
+        const url = new URL('https://script.google.com/macros/s/AKfycbxjgPUw5W1ehF74VwGmemLCeS9l6Z_w9z8qcMp_zcm_BZAHtI14gMyloic5_lmXmLwl/exec');
         url.searchParams.append('username', username);
         url.searchParams.append('pagename', shelf.pagename);
         url.searchParams.append('includeColumns', includeColumns.join(','));
@@ -29,7 +29,8 @@ export const fetchLiveLibData = async (username, bookAnnotations, customPages) =
             'Annotation': bookAnnotations[book.bookHref.split('/').pop()] || book.annotation || 'Нет аннотации',
             'Authors': Array.isArray(book.authors) ? book.authors.map(a => a.name).join(', ') : 'Неизвестный автор',
             'Genres': Array.isArray(book.genres) ? book.genres.map(g => g.name) : [],
-            'Series': book.details?.series || null,
+            'Series': book.details?.series || null, // General series (e.g., "Книги Сергея Лукьяненко")
+            'Cycle': book.details?.cycle || null,  // Specific cycle (e.g., { name: "Цикл «Кваzи», №1", href: "..." })
             'My Rating': parseFloat(book.rating?.user) || 0,
             'Cover URL': book.coverHref || 'https://placehold.co/100x150?text=Нет+обложки',
             'Title': book.title,
