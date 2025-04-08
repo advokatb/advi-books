@@ -22,8 +22,8 @@ export function initCopyListButton(readBooks) {
                 <div>
                     <label for="label-style" class="text-gray-600 text-sm font-medium">Стиль оформления:</label>
                     <select id="label-style" class="btn text-left w-full mt-1">
-                        <option value="labels" selected>Текстовые метки</option>
-                        <option value="emojis">Эмодзи</option>
+                        <option value="emojis" selected>Эмодзи</option>
+                        <option value="labels">Текстовые метки</option>
                     </select>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
