@@ -826,3 +826,13 @@ select.btn {
 #notification-popup button {
     touch-action: manipulation;
 }
+
+footer {
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.9);
+    border-top: 1px solid #e5e7eb; /* gray-200 */
+}
+
+footer p {
+    margin: 0.25rem 0;
+}
