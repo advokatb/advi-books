@@ -186,7 +186,7 @@ class BookCollection {
             textDiv.className = 'mt-2';
             textDiv.innerHTML = `
                 <p class="text-md font-semibold text-gray-800">📚 ${series} (${books.length} 🕮)</p>
-                <p class="text-gray-600 text-sm">Автор: ${author}</p>
+                <p class="text-gray-600 text-sm">👤: ${author}</p>
             `;
 
             // Append covers first, then text
@@ -306,10 +306,10 @@ class BookCollection {
         div.innerHTML = `
             <img src="${photoUrl}" alt="${mostProlificAuthor} Photo" class="w-16 h-24 object-cover rounded mr-2">
             <div class="flex-1">
-                <p class="text-gray-700 text-base font-bold mb-1">Автор: ${mostProlificAuthor}</p>
+                <p class="text-gray-700 text-base font-bold mb-1">👤: ${mostProlificAuthor}</p>
                 <p class="text-gray-600 text-sm mb-2">${authorBookCount} книг</p>
                 <hr class="my-2 border-gray-300">
-                <p class="text-gray-700 text-base font-bold mb-1">Жанр: ${mostReadGenre}</p>
+                <p class="text-gray-700 text-base font-bold mb-1">🎭: ${mostReadGenre}</p>
             </div>
         `;
         return div;
