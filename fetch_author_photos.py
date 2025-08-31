@@ -71,7 +71,7 @@ def fetch_author_photo(author_url):
 
     try:
         driver.get(author_url)
-        time.sleep(2)  # Wait for page to load
+        time.sleep(30)  # Wait for page to load
         soup = BeautifulSoup(driver.page_source, 'html.parser')
 
         img_tag = soup.select_one('img#profile-avatar')
