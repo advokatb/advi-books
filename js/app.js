@@ -4,6 +4,7 @@
 import { fetchLiveLibData, loadStaticData } from '../js/dataFetcher.js';
 import { loadBooksFromStorage, saveBooksToStorage } from '../js/storage.js';
 import { getBookDeclension, setupTabSwitching } from '../js/utils.js';
+import { getHardcoverApiKey, getBookProgress } from '../js/hardcoverApi.js';
 
 // Book and BookCollection classes are loaded globally via script tags
 // They should be available in global scope after scripts load
@@ -96,6 +97,46 @@ async function renderCurrentBook(currentBooks) {
         const author = await book.getDisplayAuthor();
         const pages = await book.loadCustomPages();
         
+        // Try to get reading progress from Hardcover API
+        let progressData = null;
+        let progressHtml = '';
+        
+        try {
+            const apiKey = await getHardcoverApiKey();
+            if (apiKey) {
+                progressData = await getBookProgress(book.Title, author, apiKey);
+                
+                if (progressData && progressData.percentage > 0) {
+                    const percentage = Math.round(progressData.percentage);
+                    const currentPage = progressData.currentPage || 0;
+                    const totalPages = progressData.totalPages || 0;
+                    
+                    progressHtml = `
+                        <div class="current-book-progress">
+                            <div class="progress-header">
+                                <span class="progress-label">
+                                    <i class="fas fa-book-reader"></i>
+                                    Прогресс чтения
+                                </span>
+                                <span class="progress-percentage">${percentage}%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: ${percentage}%"></div>
+                            </div>
+                            ${currentPage > 0 && totalPages > 0 ? `
+                                <div class="progress-details">
+                                    <span class="progress-pages">${currentPage} / ${totalPages} страниц</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+            }
+        } catch (error) {
+            console.warn('Could not fetch reading progress:', error);
+            // Continue without progress if API fails
+        }
+        
         container.innerHTML = `
             <div class="current-book-display">
                 <img src="${book.getCoverUrl()}" 
@@ -122,6 +163,7 @@ async function renderCurrentBook(currentBooks) {
                         </p>
                     `}
                     ${book.Cycle ? `<p class="current-book-cycle"><i class="fas fa-sync-alt"></i> ${book.getCycleDisplay()?.fullDisplay || ''}</p>` : ''}
+                    ${progressHtml}
                 </div>
             </div>
         `;

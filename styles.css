@@ -1475,12 +1475,19 @@ section {
     font-weight: 700;
     color: var(--gray-900);
     margin-bottom: var(--spacing-md);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    line-height: 1.3;
 }
 
 .current-book-title a {
     color: inherit;
     text-decoration: none;
     transition: var(--transition);
+    display: block;
+    width: 100%;
 }
 
 .current-book-title a:hover {
@@ -1503,6 +1510,68 @@ section {
 .current-book-cycle i {
     color: var(--primary);
     width: 20px;
+}
+
+/* Reading Progress */
+.current-book-progress {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--gray-200);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.progress-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.progress-label i {
+    color: var(--primary);
+    width: 16px;
+}
+
+.progress-percentage {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: var(--gray-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xs);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease;
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+.progress-details {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+.progress-pages {
+    font-weight: 500;
 }
 
 /* ============================================
@@ -1830,6 +1899,20 @@ section {
     .series-book {
         width: 60px;
     }
+    
+    .current-book-display {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .current-book-info {
+        width: 100%;
+    }
+    
+    .current-book-title {
+        font-size: 1.25rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1848,6 +1931,15 @@ section {
     
     .quick-stats-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .current-book-title {
+        font-size: 1.125rem;
+    }
+    
+    .current-book-cover {
+        width: 100px;
+        height: 151px;
     }
 }
 
