@@ -141,7 +141,7 @@ def generate_zero_pages_markdown(username, books):
 
     # Prepare Markdown content
     markdown_content = [
-        "# Books with欠頁數",
+        "# Books with 0 pages",
         f"Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         "",
         "The following books have 0 pages recorded in `custom_pages.json`. Please check these manually on LiveLib:",
