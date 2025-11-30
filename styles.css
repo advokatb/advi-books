@@ -233,6 +233,38 @@ body {
     margin-bottom: var(--spacing-xs);
 }
 
+.stat-value-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.stat-value-row .stat-value {
+    margin-bottom: 0;
+}
+
+.stat-value-separator {
+    font-size: 1.5rem;
+    color: var(--gray-400);
+    font-weight: 300;
+}
+
+.stat-value-secondary {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-value-year {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
 .stat-label {
     font-size: 0.875rem;
     color: var(--gray-600);

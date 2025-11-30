@@ -82,7 +82,7 @@ function renderHeroStats(books) {
 
     document.getElementById('total-books').textContent = totalBooks.toLocaleString('ru-RU');
     document.getElementById('total-pages').textContent = totalPages.toLocaleString('ru-RU');
-    document.getElementById('total-this-year').textContent = `В этом году: ${booksThisYear}`;
+    document.getElementById('total-this-year').textContent = booksThisYear;
     document.getElementById('challenge-progress').textContent = `${progressPercent}%`;
     document.getElementById('challenge-bar').style.width = `${progressPercent}%`;
 }
