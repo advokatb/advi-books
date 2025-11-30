@@ -1,10 +1,10 @@
 // Modern Book Library App
 // Main application file
 
-import { fetchLiveLibData, loadStaticData } from '../js/dataFetcher.js';
-import { loadBooksFromStorage, saveBooksToStorage } from '../js/storage.js';
-import { getBookDeclension, setupTabSwitching } from '../js/utils.js';
-import { getHardcoverApiKey, getBookProgress } from '../js/hardcoverApi.js';
+import { fetchLiveLibData, loadStaticData } from './dataFetcher.js';
+import { loadBooksFromStorage, saveBooksToStorage } from './storage.js';
+import { getBookDeclension, setupTabSwitching } from './utils.js';
+import { getHardcoverApiKey, getBookProgress } from './hardcoverApi.js';
 
 // Book and BookCollection classes are loaded globally via script tags
 // They should be available in global scope after scripts load
