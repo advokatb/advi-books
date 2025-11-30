@@ -78,7 +78,7 @@ async function getHardcoverUserId() {
 }
 
 /**
- * Get API base URL - use proxy in development, direct API in production
+ * Get API base URL - use proxy in development, Cloudflare Worker in production
  * Hardcover API uses GraphQL endpoint
  */
 function getApiBaseUrl() {
@@ -87,12 +87,13 @@ function getApiBaseUrl() {
                        window.location.hostname === '127.0.0.1' ||
                        window.location.port === '8081';
     
-    // Use proxy if on localhost and proxy is available
+    // Use local proxy if on localhost
     if (isLocalhost) {
         return '/api/proxy/v1/graphql';
     }
     
-    return 'https://api.hardcover.app/v1/graphql';
+    // Use Cloudflare Worker CORS proxy for production (GitHub Pages)
+    return 'https://hardcover-proxy.igor-butsky.workers.dev';
 }
 
 /**
