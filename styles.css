@@ -524,7 +524,7 @@ section {
 
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--spacing-lg);
 }
 
@@ -656,18 +656,20 @@ section {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    margin-top: auto;
-    padding-top: var(--spacing-sm);
+    background: var(--gray-100);
+    padding: 4px 8px;
+    border-radius: var(--radius);
 }
 
 .book-card-rating .stars {
     color: #fbbf24;
+    font-size: 0.75rem;
 }
 
 .book-card-rating .rating-value {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: var(--gray-600);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .book-card-annotation-btn {
@@ -1825,6 +1827,33 @@ section {
 
 .series-count i {
     font-size: 0.625rem;
+}
+
+/* Book Card Footer (rating + pages) */
+.book-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+}
+
+.book-card-pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--primary);
+    background: var(--gray-100);
+    padding: 4px 8px;
+    border-radius: var(--radius);
+    font-weight: 600;
+}
+
+.book-card-pages i {
+    font-size: 0.625rem;
+    color: var(--primary);
 }
 
 /* ============================================

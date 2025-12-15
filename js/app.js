@@ -346,6 +346,8 @@ async function renderBookCard(book) {
     
     const card = document.createElement('div');
     card.className = 'book-card';
+    const pagesDisplay = pages && pages !== 'N/A' && pages > 0 ? pages : null;
+    
     card.innerHTML = `
         <div class="book-card-cover">
             <img src="${book.getCoverUrl()}" 
@@ -367,12 +369,20 @@ async function renderBookCard(book) {
                 <i class="fas fa-user"></i>
                 <span>${author}</span>
             </div>
-            ${rating > 0 ? `
-                <div class="book-card-rating">
-                    <div class="stars">${starsHtml}</div>
-                    <span class="rating-value">${rating.toFixed(1)}</span>
-                </div>
-            ` : ''}
+            <div class="book-card-footer">
+                ${rating > 0 ? `
+                    <div class="book-card-rating">
+                        <div class="stars">${starsHtml}</div>
+                        <span class="rating-value">${rating.toFixed(1)}</span>
+                    </div>
+                ` : '<div></div>'}
+                ${pagesDisplay ? `
+                    <div class="book-card-pages">
+                        <i class="fas fa-file-alt"></i>
+                        <span>${pagesDisplay}</span>
+                    </div>
+                ` : ''}
+            </div>
         </div>
     `;
     
