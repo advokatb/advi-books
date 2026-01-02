@@ -469,9 +469,13 @@ async function renderBookCard(book) {
     return card;
 }
 
-async function renderBooksList(books, containerId) {
+async function renderBooksList(books, containerId, append = false) {
     const container = document.getElementById(containerId);
-    container.innerHTML = '';
+    
+    // Очищаем контейнер только при первой загрузке (не при "Загрузить ещё")
+    if (!append) {
+        container.innerHTML = '';
+    }
     
     const startIndex = books.currentPage * books.booksPerPage;
     const endIndex = startIndex + books.booksPerPage;
@@ -1062,7 +1066,7 @@ function setupEventHandlers() {
     // Load more
     document.getElementById('load-more')?.addEventListener('click', async () => {
         books.currentPage += 1;
-        await renderBooksList(books, 'book-list');
+        await renderBooksList(books, 'book-list', true); // append = true
     });
     
     // Floating actions panel toggle
