@@ -996,7 +996,7 @@ function setupEventHandlers() {
                         const futureContainer = document.getElementById('future-reads');
                         if (toReadBooks && toReadBooks.models && toReadBooks.models.length > 0) {
                             toReadBooks.currentPage = 0;
-                            toReadBooks.booksPerPage = 12;
+                            toReadBooks.booksPerPage = 15;
                             await renderBooksList(toReadBooks, 'future-reads');
                         } else {
                             if (futureContainer) {
