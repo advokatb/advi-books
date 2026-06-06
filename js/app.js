@@ -985,7 +985,7 @@ function setupEventHandlers() {
                         const booksToRender = originalBooks || books;
                         if (booksToRender && booksToRender.allBooks) {
                             booksToRender.currentPage = 0;
-                            booksToRender.booksPerPage = 12;
+                            booksToRender.booksPerPage = 15;
                             // Reset models to all books
                             booksToRender.models = [...booksToRender.allBooks];
                             booksToRender.sortBy(document.getElementById('sort-by')?.value || 'date-desc');
