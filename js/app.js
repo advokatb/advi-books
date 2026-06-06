@@ -1056,7 +1056,7 @@ function setupEventHandlers() {
         );
         filteredBooks.sortBy(sortBy?.value || 'date-desc');
         filteredBooks.currentPage = 0;
-        filteredBooks.booksPerPage = 12;
+        filteredBooks.booksPerPage = 15;
         await renderBooksList(filteredBooks, 'book-list');
     };
     
@@ -1195,7 +1195,7 @@ async function renderAll() {
     
     // Render books
     books.currentPage = 0;
-    books.booksPerPage = 12;
+    books.booksPerPage = 15;
     books.sortBy('date-desc');
     await renderBooksList(books, 'book-list');
     
